@@ -1,4 +1,4 @@
-from connection import connection
+from app import connection
 
 def create_highscores_table():
     return ("CREATE TABLE IF NOT EXISTS highscores (id SERIAL PRIMARY KEY, username TEXT, score INT);")
