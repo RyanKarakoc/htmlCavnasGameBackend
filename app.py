@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from flask import Flask, request
+from flask import Flask
 from models import *
 from controller import *
 
@@ -24,3 +24,5 @@ def get_api_post_sumbit_score():
     response = post_sumbit_score()
     return response
 
+if __name__ == "__main__":
+    app.run()
