@@ -1,5 +1,5 @@
 
-from flask import Flask, request
+from flask import request
 from models import *
 
 def get_highscores():
@@ -16,4 +16,4 @@ def post_sumbit_score():
     username = post_data["username"]
     score = post_data["score"]
     data = insert_highscore(username, score)
-    return {"msg": data}
+    return {"msg": data}, 201
