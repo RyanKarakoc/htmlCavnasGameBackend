@@ -18,19 +18,18 @@ def fetch_highscore_by_username(username):
             cursor.execute(query_string)
             data = cursor.fetchone()
             if data is None:
-                return {"error": "No highscore data found for this username"}
+                return {"msg": "No highscore data found for this username"}
             return data
         
 def insert_highscore(username, score):
     query_string = f"INSERT INTO highscores (username, score) VALUES ('{username}', {score}) RETURNING *;"
     check_user = fetch_highscore_by_username(username)
-    print(check_user)
-    if check_user["error"] == "No highscore data found for this username":
+    print(type(check_user))
+    if type(check_user) is dict:
         with connection:
-            with connection.cursor() as cursor:        
+            with connection.cursor() as cursor:
                 cursor.execute(query_string)
                 data = cursor.fetchall()
-                print(data)
-                return check_user
+                return data
     else:
-        return {"error": "username already used"}
+        return {"error": "username already taken"}

@@ -16,4 +16,4 @@ def post_sumbit_score():
     username = post_data["username"]
     score = post_data["score"]
     data = insert_highscore(username, score)
-    return {"msg": data}, 201
+    return {"data": data}, 201
