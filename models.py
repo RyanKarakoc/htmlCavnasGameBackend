@@ -25,7 +25,7 @@ def insert_highscore(username, score):
     query_string = f"INSERT INTO highscores (username, score) VALUES ('{username}', {score}) RETURNING *;"
     check_user = fetch_highscore_by_username(username)
     print(check_user)
-    if check_user["error"] == "No highscore data found for this username":
+    if check_user["error"] == "No highscore data found for this username" and check_user is None:
         with connection:
             with connection.cursor() as cursor:        
                 cursor.execute(query_string)
