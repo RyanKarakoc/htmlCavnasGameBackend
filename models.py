@@ -15,8 +15,8 @@ def fetch_highscore_by_username(username):
     query_string = f"SELECT * FROM highscores WHERE username='{username}';"
     with connection:
         with connection.cursor() as cursor:
-            cursor.execute(query_string)
-            data = cursor.fetchone()
+            # cursor.execute(query_string)
+            data = cursor.fetchone(cursor.execute(query_string))
             if data is None:
                 return {"error": "No highscore data found for this username"}
             return data
