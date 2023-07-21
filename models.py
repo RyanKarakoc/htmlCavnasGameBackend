@@ -31,6 +31,6 @@ def insert_highscore(username, score):
                 cursor.execute(query_string)
                 data = cursor.fetchall()
                 print(data)
-                return data
-    elif len(check_user) < 1:
+                return check_user
+    else:
         return {"error": "username already used"}
