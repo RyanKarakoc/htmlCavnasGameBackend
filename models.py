@@ -4,7 +4,7 @@ def create_highscores_table():
     return ("CREATE TABLE IF NOT EXISTS highscores (id SERIAL PRIMARY KEY, username TEXT, score INT);")
 
 def fetch_all_highscores():
-    query_string = "SELECT * FROM highscores ORDER BY score DESC"
+    query_string = "SELECT username, score FROM highscores ORDER BY score DESC;"
     with connection:
         with connection.cursor() as cursor:
             cursor.execute(query_string)
